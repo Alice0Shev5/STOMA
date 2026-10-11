@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_service">
+
+    <!-- Экран 1: выбор услуги (стартовый, он же в Drawer) -->
+    <fragment
+        android:id="@+id/nav_service"
+        android:name="com.example.stoma_mobile.ui.service.ServiceFragment"
+        android:label="Запись на приём"
+        tools:layout="@layout/fragment_service">
+        <action
+            android:id="@+id/action_service_to_doctor"
+            app:destination="@id/nav_doctor" />
+    </fragment>
+
+    <!-- Экран 2: выбор врача. Принимает serviceId -->
+    <fragment
+        android:id="@+id/nav_doctor"
+        android:name="com.example.stoma_mobile.ui.doctor.DoctorFragment"
+        android:label="Выбор врача"
+        tools:layout="@layout/fragment_doctor">
+        <argument
+            android:name="serviceId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_doctor_to_calendar"
+            app:destination="@id/nav_calendar" />
+    </fragment>
+
+    <!-- Экран 3: календарь и слоты. Принимает doctorId -->
+    <fragment
+        android:id="@+id/nav_calendar"
+        android:name="com.example.stoma_mobile.ui.calendar.CalendarFragment"
+        android:label="Выбор времени"
+        tools:layout="@layout/fragment_calendar">
+        <argument
+            android:name="doctorId"
+            app:argType="string" />
+        <argument
+            android:name="serviceId"
+            app:argType="string" />
+    </fragment>
+
+    <!-- Экран 4 -->
+    <fragment
+        android:id="@+id/nav_appointments"
+        android:name="com.example.stoma_mobile.ui.appointments.AppointmentsFragment"
+        android:label="Мои записи"
+        tools:layout="@layout/fragment_appointments" />
+
+</navigation>
