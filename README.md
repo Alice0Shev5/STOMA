@@ -17,8 +17,28 @@
 
 ---
 
-## 🚀 Точка входа в приложение
+## Точка входа в приложение
 
 **`MainActivity`** — единственная Activity, объявленная как `LAUNCHER` в `AndroidManifest.xml`.
 
-### Цепочка инициализации
+### Структура проекта
+app/src/main/java/com/example/stoma_mobile/
+├── StomaApp.kt                    ← Application + Hilt
+├── MainActivity.kt                ← Точка входа UI
+│
+├── data/
+│   ├── local/                     ← Room: Entity, DAO, Database
+│   ├── mock/                      ← MockData, мок-репозитории
+│   ├── model/                     ← Доменные модели
+│   └── repository/                ← Интерфейсы и реализации
+│
+├── di/                            ← Hilt-модули
+│   ├── DatabaseModule.kt
+│   └── RepositoryModule.kt
+│
+└── ui/
+    ├── theme/                     ← Material 3 тема (цвета, шрифты)
+    ├── service/                   ← Экран 1: выбор услуги
+    ├── doctor/                    ← Экран 2: выбор врача
+    ├── calendar/                  ← Экран 3: календарь и слоты
+    └── appointments/              ← Экран 4: мои записи
